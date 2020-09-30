@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class countries(models.Model):
     name=models.CharField(max_length=100,default="enter")
     image=models.ImageField(upload_to='country/images')
@@ -19,7 +20,7 @@ class transport(models.Model):
     name=models.CharField(max_length=100,default="enter")
     def __str__(self):
     	return self.name
-class finalTable(models.Model):
+class finaltable(models.Model):
     country=models.ForeignKey(countries,on_delete=models.CASCADE,null=True)
     disaster=models.ForeignKey(disaster,on_delete=models.CASCADE,null=True)
     Lattitude=models.CharField(max_length=100,default="lattitude",null=True)
