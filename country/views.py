@@ -17,7 +17,7 @@ def country(request,id):
     print(set)
     for j in set:
         disaste=disaster.objects.filter(name=j)
-        all.append(disaste)
+        all.append([disaste])
     
     parameter={'count':s,'all':all}
     print(parameter)
