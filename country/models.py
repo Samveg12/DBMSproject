@@ -19,12 +19,12 @@ class transport(models.Model):
     name=models.CharField(max_length=100,default="enter")
     def __str__(self):
     	return self.name
-class final(models.Model):
-    country=models.ForeignKey(countries,on_delete=models.CASCADE)
-    disaster=models.ForeignKey(disaster,on_delete=models.CASCADE)
-    Lattitude=models.CharField(max_length=100,default="lattitude")
-    Longitude=models.CharField(max_length=100,default="longitude")
-    severity=models.CharField(max_length=100)
+class finalTable(models.Model):
+    country=models.ForeignKey(countries,on_delete=models.CASCADE,null=True)
+    disaster=models.ForeignKey(disaster,on_delete=models.CASCADE,null=True)
+    Lattitude=models.CharField(max_length=100,default="lattitude",null=True)
+    Longitude=models.CharField(max_length=100,default="longitude",null=True)
+    severity=models.CharField(max_length=100,null=True)
     startdate=models.DateField(null=True)
     enddate=models.DateField(null=True)
     #startTime=models.TimeField(auto_now_add=True,null=True)
