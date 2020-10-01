@@ -1,0 +1,26 @@
+{% for i in count %}
+        <div class="card" style="width: 18rem;">
+            <img src="/media/{{i.disaster.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.disaster}}</h5>
+              <p class="card-text">The precautions are {{i.disaster.precautions}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for m in i.safehaven.all %}
+                    <li class="list-group-item">{{m.name}}</li>
+                {% endfor %}
+                {% for m in i.transport.all %}
+                    <li class="list-group-item">{{m.name}}</li>
+                {% endfor %}
+
+
+              <li class="list-group-item">{{i.Lattitude}}</li>
+              <li class="list-group-item">{{i.Longitude}}</li>
+            </ul>
+            <div class="card-body">
+            </div>
+          </div>
+        {% endfor %}
+
+
+

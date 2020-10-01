@@ -21,7 +21,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.index,name="countryHome"),
-    path('country/<int:id>', views.country,name="country")
+    path('country/<int:id>', views.country,name="country"),
+    path('country/disasterdisplay/<int:id>', views.disaster,name="disaster")
     
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

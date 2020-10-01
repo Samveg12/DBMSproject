@@ -14,11 +14,12 @@ def country(request,id):
     y=countries.objects.filter(id=id)
     s=finaltable.objects.filter(country=id)
     set=[item.disaster for item in s]
-    print(set)
-    for j in set:
-        disaste=disaster.objects.filter(name=j)
-        all.append([disaste])
-    
     parameter={'count':s,'all':all}
-    print(parameter)
     return render(request,'country/country.html',parameter)
+def disaster(request,id):
+    all=[]
+    s=finaltable.objects.filter(id=id)
+    set=[item.disaster for item in s]
+    print(s)
+    parameter={'count':s,'all':all}
+    return render(request,'country/disaster.html',parameter)
