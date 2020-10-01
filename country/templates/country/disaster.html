@@ -1,4 +1,22 @@
-{% for i in count %}
+
+        <!DOCTYPE html>
+        <html lang="en">
+        {% load static %}
+        <head>
+          
+            <title>Disaster Management Portal</title>
+            <link rel="stylesheet" href="{% static 'country/css/map.css'%}">
+
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbMFpgA9Zv2nvf_7Jt6TL7Erl8FSmqCX0&callback=initMap&libraries=&v=weekly"defer></script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js">
+
+    </script>
+            
+        </head>
+        <body>
+            {% for i in count %}
         <div class="card" style="width: 18rem;">
             <img src="/media/{{i.disaster.image}}" class="card-img-top" alt="...">
             <div class="card-body">
@@ -20,7 +38,19 @@
             <div class="card-body">
             </div>
           </div>
+          
         {% endfor %}
+        <div id="map"></div>
+            
+        <script src="{% static 'country/js/map.js'%}">
+
+        </script>
+        
+                
+        </body>
+        
+        <!-- Mirrored from portotheme.com/html/porto_ecommerce/demo_1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Oct 2020 10:25:49 GMT -->
+        </html>
 
 
 
