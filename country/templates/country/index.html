@@ -1,44 +1,190 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<head>
+  {% load static %}
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    {% load static %}
-    <a href="{%static '/country/samveg.txt' %}">Click Here</a>
-    <div class="container">
-      <div class='row justify-content-between' style="margin-top:100px;">
-        {% for i in count %}
-        <div class="col-xs-3 col-sm-3 col-md-3">
-          <div class="card" style="width: 18rem;">
-            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{i.name}}</h5>
-              <a href="/country/{{i.id}}" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-          {% if forloop.counter|divisibleby:2 %}
-            </div><div class='row justify-content-between mt-200' style="margin-top:100px;">
-          {% endif %}
-        {% endfor %}
+	<title>Disaster Management Portal</title>
 
+	<meta name="keywords" content="HTML5 Template" />
+	<meta name="description" content="Porto - Bootstrap eCommerce Template">
+	<meta name="author" content="SW-THEMES">
 
-    </div>
-    
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.ico">
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
+	<script type="text/javascript">
+		WebFontConfig = {
+			google: { families: [ 'Open+Sans:300,400,600,700,800','FEATURED PRODUCTS
+Poppins:300,400,500,600,700' ] }
+		};
+		(function(d) {
+			var wf = d.createElement('script'), s = d.scripts[0];
+			wf.src = 'assets/js/webfont.js';
+			wf.async = true;
+			s.parentNode.insertBefore(wf, s);
+		})(document);
+	</script>
+
+	<!-- Plugins CSS File -->
+	<link rel="stylesheet" href="{% static 'country/css/bootstrap.css'%}">
+
+	<!-- Main CSS File -->
+	<link rel="stylesheet" href="{% static 'country/css/file.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'country/css/fontt.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'country/css/stylee.css'%}">
+	<!-- Jquery -->
+	<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'country/css/line.css'%}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'country/css/all.min.css'%}">
+</head>
+<body class="full-screen-slider">
+	
+
+		<main class="main">
+			<div class="home-slider owl-carousel owl-theme show-nav-hover nav-big">
+				
+
+				<div class="home-slide home-slide2 banner">
+					<img class="slide-bg " src="{% static 'country/images/photo.jpg' %}"  alt="home banner">
+					<div class="banner-layer banner-layer-middle">
+						<h2 style="color:rgb(255,255,255)" class="m-b-1">Stay Safe </h2>
+						<h3 style="color:rgb(255,255,255)" class="rotated-upto-text mb-0">When A Disaster Strikes</h3>
+					</div><!-- End .banner-layer -->
+				</div><!-- End .home-slide -->
+			</div><!-- End .home-slider -->
+
+			<section class="container">
+				<h2 class="section-title ls-n-10 text-center pt-2 m-b-4">Chose Your country</h2>
+
+				<div class="owl-carousel owl-theme nav-image-center show-nav-hover nav-outer cats-slider">
+						{% for i in count %}
+
+							<div class="product-category">
+								<a href="/country/{{i.id}}">
+									<figure>
+										<img src="/media/{{i.image}}">
+									</figure>
+									<div class="category-content">
+										<h3>{{i.name}}</h3>
+									</div>
+								</a>
+							</div>
+							
+        				{% endfor %}
+				</div>
+					
+
+			
+	<!-- Add Cart Modal -->
+	<div class="modal fade" id="addCartModal" tabindex="-1" role="dialog" aria-labelledby="addCartModal" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body add-cart-box text-center">
+			<p>You've just added this product to the<br>cart:</p>
+			<h4 id="productTitle"></h4>
+			<img src="#" id="productImage" width="100" height="100" alt="adding cart image">
+			<div class="btn-actions">
+				<a href="cart.html"><button class="btn-primary">Go to cart page</button></a>
+				<a href="#"><button class="btn-primary" data-dismiss="modal">Continue</button></a>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<div class="page-content">
+		<div class="form-v4-content">
+			<div class="form-left">
+				<h2 style="color:white;">INFOMATION</h2>
+				<p class="text-1">Worried about disasters happening in your country? Worried about your family safety?</p>
+				<p class="text-2"><span>This form will give you upates via email of any predicted disaster</p>
+				
+			</div>
+			<form class="form-detail" action="#" method="post" id="myform">
+				<h2>REGISTER FORM</h2>
+				<div class="form-group">
+					<div class="form-row form-row-1">
+						<label for="first_name">First Name</label>
+						<input type="text" name="first_name" id="first_name" class="input-text">
+					</div>
+					<div class="form-row form-row-1">
+						<label for="last_name">Last Name</label>
+						<input type="text" name="last_name" id="last_name" class="input-text">
+					</div>
+				</div>
+				<div class="form-row">
+					<label for="your_email">Your Email</label>
+					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+				</div>
+				<div class="form-row">
+					<label for="last_name">Your Country</label>
+					<input type="text" name="last_name" id="last_name" class="input-text">
+				</div>
+				<div class="form-checkbox">
+					<label class="container"><p>I agree to the <a href="#" class="text">Terms and Conditions</a></p>
+					  	<input type="checkbox" name="checkbox">
+					  	<span class="checkmark"></span>
+					</label>
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="Sregister" class="register" value="Sudmit">
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
+
+	<!-- Plugins JS File -->
+	<script src="{% static 'country/js/bootstrap.bundle.min.js'%}"></script>
+	<script src="{% static 'country/js/jquery.min.js'%}"></script>
+	<script src="{% static 'country/js/plugins.min.js'%}"></script>
+
+	<!-- Main JS File -->
+	<script src="{% static 'country/js/main.min.js'%}"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+	<script>
+		// just for the demos, avoids form submit
+		jQuery.validator.setDefaults({
+		  	debug: true,
+		  	success:  function(label){
+        		label.attr('id', 'valid');
+   		 	},
+		});
+		$( "#myform" ).validate({
+		  	rules: {
+			    password: "required",
+		    	comfirm_password: {
+		      		equalTo: "#password"
+		    	}
+		  	},
+		  	messages: {
+		  		first_name: {
+		  			required: "Please enter a firstname"
+		  		},
+		  		last_name: {
+		  			required: "Please enter a lastname"
+		  		},
+		  		your_email: {
+		  			required: "Please provide an email"
+		  		},
+		  		password: {
+	  				required: "Please enter a password"
+		  		},
+		  		comfirm_password: {
+		  			required: "Please enter a password",
+		      		equalTo: "Wrong Password"
+		    	}
+		  	}
+		});
+	</script>
+</body>
+
+<!-- Mirrored from portotheme.com/html/porto_ecommerce/demo_1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Oct 2020 10:25:49 GMT -->
 </html>

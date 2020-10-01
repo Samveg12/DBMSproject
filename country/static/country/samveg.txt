@@ -1,1 +1,19 @@
-This is gonna be awesome..
+<div class="container">
+      <div class='row justify-content-between' style="margin-top:100px;">
+        {% for i in count %}
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 18rem;">
+            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.name}}</h5>
+              <a href="/country/{{i.id}}" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+          {% if forloop.counter|divisibleby:2 %}
+            </div><div class='row justify-content-between mt-200' style="margin-top:100px;">
+          {% endif %}
+        {% endfor %}
+    
+    
+    </div>
