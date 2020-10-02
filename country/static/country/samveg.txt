@@ -1,19 +1,51 @@
-<div class="container">
-      <div class='row justify-content-between' style="margin-top:100px;">
-        {% for i in count %}
-        <div class="col-xs-3 col-sm-3 col-md-3">
-          <div class="card" style="width: 18rem;">
-            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+
+        <!DOCTYPE html>
+        <html lang="en">
+        {% load static %}
+        <head>
+          
+            <title>Disaster Management Portal</title>
+            <link rel="stylesheet" href="{% static 'country/css/map.css'%}">
+
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbMFpgA9Zv2nvf_7Jt6TL7Erl8FSmqCX0&callback=initMap&libraries=&v=weekly"defer></script>
+    
+
+            
+        </head>
+        <body>
+            {% for i in count %}
+        <div class="card" style="width: 18rem;">
+            <img src="/media/{{i.disaster.image}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">{{i.name}}</h5>
-              <a href="/country/{{i.id}}" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">{{i.disaster}}</h5>
+              <p class="card-text">The precautions are {{i.disaster.precautions}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for m in i.safehaven.all %}
+                    <li class="list-group-item">{{m.name}}</li>
+                {% endfor %}
+                {% for m in i.transport.all %}
+                    <li class="list-group-item">{{m.name}}</li>
+                {% endfor %}
+
+
+              <li class="list-group-item">{{i.Lattitude}}</li>
+              <li class="list-group-item">{{i.Longitude}}</li>
+            </ul>
+            <div class="card-body">
             </div>
           </div>
-        </div>
-          {% if forloop.counter|divisibleby:2 %}
-            </div><div class='row justify-content-between mt-200' style="margin-top:100px;">
-          {% endif %}
+          
         {% endfor %}
-    
-    
-    </div>
+        <div id="map"></div>
+            
+        <script src="{% static 'country/js/map.js'%}">
+
+        </script>
+        
+                
+        </body>
+        
+        <!-- Mirrored from portotheme.com/html/porto_ecommerce/demo_1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Oct 2020 10:25:49 GMT -->
+        </html>

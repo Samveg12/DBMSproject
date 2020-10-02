@@ -23,8 +23,8 @@ class transport(models.Model):
 class finaltable(models.Model):
     country=models.ForeignKey(countries,on_delete=models.CASCADE,null=True)
     disaster=models.ForeignKey(disaster,on_delete=models.CASCADE,null=True)
-    Lattitude=models.CharField(max_length=100,default="lattitude",null=True)
-    Longitude=models.CharField(max_length=100,default="longitude",null=True)
+    Lattitud=models.DecimalField(max_digits=19, decimal_places=4, blank = True, default =22.35, null = True)
+    Longitud=models.DecimalField(max_digits=19, decimal_places=4, blank = True, default =33.55, null = True)
     severity=models.CharField(max_length=100,null=True)
     startdate=models.DateField(null=True)
     enddate=models.DateField(null=True)
