@@ -42,10 +42,11 @@
 // Initialize and add the map
 function initMap() {
   // The location of Uluru
-  var lat=parseFloat(document.getElementById('pass1').value);
-  var lng=parseFloat(document.getElementById('pass2').value);
+  var lat=parseFloat(document.getElementById('pass1').innerText);
+  var lng=parseFloat(document.getElementById('pass2').innerText);
   console.log(lat)
   var uluru = {lat:lat, lng:lng};
+  console.log(uluru)
   var map = new google.maps.Map(
       document.getElementById('map'), {zoom: 4, center: uluru});
   var marker = new google.maps.Marker({position: uluru, map: map});
