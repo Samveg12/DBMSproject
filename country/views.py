@@ -23,3 +23,6 @@ def disaster(request,id):
     print(s)
     parameter={'count':s,'all':all}
     return render(request,'country/disaster.html',parameter)
+def thankyou(request):
+    return render(request,'country/thankyou.html')
+

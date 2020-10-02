@@ -41,6 +41,8 @@ Poppins:300,400,500,600,700' ] }
 	<!-- Main Style Css -->
     <link rel="stylesheet" href="{% static 'country/css/line.css'%}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'country/css/all.min.css'%}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body class="full-screen-slider">
 	
@@ -104,7 +106,7 @@ Poppins:300,400,500,600,700' ] }
 				<p class="text-2"><span>This form will give you upates via email of any predicted disaster</p>
 				
 			</div>
-			<form class="form-detail" action="#" method="post" id="myform">
+			<form class="form-detail" action="/thankyou" method="post" id="myform">
 				<h2>REGISTER FORM</h2>
 				<div class="form-group">
 					<div class="form-row form-row-1">
@@ -121,8 +123,17 @@ Poppins:300,400,500,600,700' ] }
 					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
 				</div>
 				<div class="form-row">
-					<label for="last_name">Your Country</label>
-					<input type="text" name="last_name" id="last_name" class="input-text">
+					<div class="form-group">
+      					<label class="mx-4" for="inputState">Country</label>
+      						<select id="inputState" class="form-control">
+        						<option selected>Choose...</option>
+								<option>India</option>
+								<option>UAE</option>
+								<option>USA</option>
+								<option>Japan</option>
+								<option>Australia</option>
+      						</select>
+    				</div>
 				</div>
 				<div class="form-checkbox">
 					<label class="container"><p>I agree to the <a href="#" class="text">Terms and Conditions</a></p>
@@ -130,8 +141,8 @@ Poppins:300,400,500,600,700' ] }
 					  	<span class="checkmark"></span>
 					</label>
 				</div>
-				<div class="form-row-last">
-					<input type="submit" name="Sregister" class="register" value="Sudmit">
+				<div href="/thankyou" class="form-row-last">
+					<input  type="submit" name="sudmit" class="register" value="Sudmit">
 				</div>
 			</form>
 		</div>
@@ -146,6 +157,9 @@ Poppins:300,400,500,600,700' ] }
 
 	<!-- Main JS File -->
 	<script src="{% static 'country/js/main.min.js'%}"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
@@ -174,13 +188,7 @@ Poppins:300,400,500,600,700' ] }
 		  		your_email: {
 		  			required: "Please provide an email"
 		  		},
-		  		password: {
-	  				required: "Please enter a password"
-		  		},
-		  		comfirm_password: {
-		  			required: "Please enter a password",
-		      		equalTo: "Wrong Password"
-		    	}
+		  		
 		  	}
 		});
 	</script>
