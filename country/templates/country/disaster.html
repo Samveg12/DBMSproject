@@ -36,6 +36,8 @@
 
         <span id="pass1">{{count.0.Lattitud}}</span>
         <span id="pass2">{{count.0.Longitud}}</span>
+        <span id="pass3">{{count.0.radius}}</span>
+
         <div id="map"></div>
 
     <script>
@@ -44,13 +46,35 @@ function initMap() {
   // The location of Uluru
   var lat=parseFloat(document.getElementById('pass1').innerText);
   var lng=parseFloat(document.getElementById('pass2').innerText);
+  var rad=parseFloat(document.getElementById('pass3').innerText);
+
   console.log(lat)
   var uluru = {lat:lat, lng:lng};
   console.log(uluru)
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  var marker = new google.maps.Marker({position: uluru, map: map});
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 8,
+    center: { lat: lat, lng: lng },
+    mapTypeId: "terrain",
+  });
+  const citymap = {
+  chicago: {
+    center: { lat: lat, lng: lng },
+
+  }
 }
+for (const city in citymap) {
+  const cityCircle = new google.maps.Circle({
+      strokeColor: "#FF0000",
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: "#FF0000",
+      fillOpacity: 0.35,
+      map,
+      center: citymap[city].center,
+      radius: rad
+    });
+  }
+  };
     </script>
     
     <script defer

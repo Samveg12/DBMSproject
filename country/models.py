@@ -28,6 +28,7 @@ class finaltable(models.Model):
     severity=models.CharField(max_length=100,null=True)
     startdate=models.DateField(null=True)
     enddate=models.DateField(null=True)
+    radius=models.IntegerField(default=0)
     #startTime=models.TimeField(auto_now_add=True,null=True)
     #endTime=models.TimeField(auto_now_add=True,null=True)
     transport=models.ManyToManyField(transport)
