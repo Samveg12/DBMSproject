@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'country'
+    'country',
+    'source',
+    "bootstrap4",
+    "bootstrap_datepicker_plus",
 ]
 
 MIDDLEWARE = [
@@ -121,3 +124,13 @@ GEOIP_PATH=os.path.join(BASE_DIR,'geoip')
 STATIC_URL = '/static/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/source/login"
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'bhavya.pritesh@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get("PASSWORD")
+print(EMAIL_HOST_PASSWORD)

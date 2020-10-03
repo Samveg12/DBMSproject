@@ -11,32 +11,23 @@
     {% load static %}
   </head>
   <body>
-    {% for i in count %}
         <div class="card" style="width: 18rem;">
-            <img src="/media/{{i.disaster.image}}" class="card-img-top" alt="...">
+            <img src="/media/{{count.disaster.image}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">{{i.disaster}}</h5>
-              <p class="card-text">The precautions are {{i.disaster.precautions}}</p>
+              <h5 class="card-title">{{count.disaster}}</h5>
+              <p class="card-text">The precautions are {{count.disaster.precautions}}</p>
+              <p class="card-text">Helpline is {{helpline}}</p>
             </div>
-            <ul class="list-group list-group-flush">
-                {% for m in i.safehaven.all %}
-                    <li class="list-group-item">{{m.name}}</li>
-                {% endfor %}
-                {% for m in i.transport.all %}
-                    <li class="list-group-item">{{m.name}}</li>
-                {% endfor %}
-            </ul>
             <div class="card-body">
             </div>
           </div>
         
-        {% endfor %}
         <div id="map"></div>
             
 
-        <span id="pass1">{{count.0.Lattitud}}</span>
-        <span id="pass2">{{count.0.Longitud}}</span>
-        <span id="pass3">{{count.0.radius}}</span>
+        <span id="pass1">{{count.Lattitud}}</span>
+        <span id="pass2">{{count.Longitud}}</span>
+        <span id="pass3">{{count.radius}}</span>
 
         <div id="map"></div>
 

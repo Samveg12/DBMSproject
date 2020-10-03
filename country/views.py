@@ -1,28 +1,80 @@
 from django .http import HttpResponse
 from .models import countries
-from .models import finaltable
+from .models import finaltable,History,Helpline
 from .models import disaster
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from .forms import Email
+from django.core.mail import send_mail
+import datetime
+from django.utils import timezone
 
 
-from django.shortcuts import render
-def index(request):
-    country=countries.objects.all()
-    parameter={'count':country}
-    return render(request,'country/index.html',parameter)
+
+
+
+from django.shortcuts import render,redirect
+
+def mail(name,email,country):
+    send_mail(
+        subject = "alert",
+        message = f'thanks {name} for registering for {country}',
+        from_email = "bhavya.shah@spit.ac.in",
+        recipient_list = [email],
+        fail_silently = False,
+    )
+
+class index(ListView):
+    model = countries
+    template_name="country/index.html"
+    context_object_name="count"
+
 def country(request,id):
+    now = timezone.now()
+    print(now)
     all=[]
     y=countries.objects.filter(id=id)
     s=finaltable.objects.filter(country=id)
+    for i in s:
+        if i.enddate != None:
+            if now>i.enddate:
+                history = History(country=i.country,disaster=i.disaster,Lattitud=i.Lattitud,Longitud=i.Longitud,severity=i.severity,startdate=i.startdate,enddate=i.enddate,city=i.city,radius=i.radius,additionInfo=i.additionInfo)
+                history.save()
+                i.delete()
     set=[item.disaster for item in s]
     parameter={'count':s,'all':all}
     return render(request,'country/country.html',parameter)
-def disaster(request,id):
-    all=[]
-    s=finaltable.objects.filter(id=id)
-    set=[item.disaster for item in s]
-    print(s)
-    parameter={'count':s,'all':all}
-    return render(request,'country/disaster.html',parameter)
+class Disaster(DetailView):
+    model = finaltable
+    template_name="country/disaster.html"
+    def get_context_data(self, **kwargs):
+            context = super(Disaster, self).get_context_data(**kwargs)
+            country = finaltable.objects.get(pk = self.kwargs.get('pk')).country
+            disaster = finaltable.objects.get(pk = self.kwargs.get('pk')).disaster
+            helpline = Helpline.objects.filter(country = country).get(disaster = disaster).Number
+            print(helpline)
+
+            context['helpline'] =helpline
+            print(context['helpline'])
+            return context
+    context_object_name = "count"
+
+
 def thankyou(request):
     return render(request,'country/thankyou.html')
+
+def register(request):
+    if request.method ==  "POST":
+        form = Email(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            country = form.cleaned_data['country']
+            mail(name,email,country)
+            form.save()
+            return redirect('/')
+        return redirect('/register')
+    form = Email()
+    return render(request,"country/register.html",{"form":form})
+
 

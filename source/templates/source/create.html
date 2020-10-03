@@ -1,0 +1,10 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{{ form.media }}
+
+<form method="POST" action="/source/create"> 
+{% csrf_token %}
+{% bootstrap_form form %}
+<input type="submit">
+</form>

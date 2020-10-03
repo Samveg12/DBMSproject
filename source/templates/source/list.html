@@ -1,0 +1,18 @@
+
+<ul>
+{% for i in final %}
+<li>{{i.country}}</li>
+<li>{{i.disaster}}</li>
+<li>{{i.severity}}</li>
+<li>{{i.additionalInfo}}</li>
+<li>{{i.Lattitud}}</li>
+<li>{{i.Longitud}}</li>
+<li>{{i.city}}</li>
+<li>{{i.radius}}</li>
+<a href="/source/change/{{i.pk}}"><button>Update</button></a>
+<a href="/source/delete/{{i.pk}}"><button>Delete</button></a>
+<br>
+{% endfor %}
+</ul>
+
+
