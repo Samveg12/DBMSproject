@@ -67,10 +67,14 @@ def register(request):
     if request.method ==  "POST":
         form = Email(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
+            print("HITUZhfb")
+            Name = form.cleaned_data['name']
+            print(Name)
             email = form.cleaned_data['email']
-            country = form.cleaned_data['country']
-            mail(name,email,country)
+            print(email)
+            Country = form.cleaned_data['country']
+            print(Country)
+            mail(Name,email,Country)
             form.save()
             return redirect('/')
         return redirect('/register')
