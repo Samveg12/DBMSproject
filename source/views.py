@@ -34,6 +34,20 @@ class Create(LoginRequiredMixin,CreateView):
 		form.fields['startdate'].widget = DateTimePickerInput()
 		form.fields['enddate'].widget = DateTimePickerInput()
 		return form 
+	def form_valid(self, form):
+		country = form.instance.country
+		disaster = form.instance.disaster
+		Lattitud = form.instance.Lattitud
+		Longitud = form.instance.Longitud
+		severity = form.instance.severity
+		startdate = form.instance.startdate
+		enddate = form.instance.enddate
+		city = form.instance.city
+		radius = form.instance.radius
+		additionalInfo = form.instance.additionInfo
+		mail(country,disaster,Lattitud,Longitud,severity,startdate,enddate,city,radius,additionalInfo)
+		return super().form_valid(form)	
+		
 	
 
 class All(LoginRequiredMixin,ListView):
