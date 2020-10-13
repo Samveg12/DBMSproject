@@ -60,6 +60,21 @@ class Disaster(DetailView):
             return context
     context_object_name = "count"
 
+class HistoryApp(DetailView):
+    model = History
+    template_name="country/disaster.html"
+    def get_context_data(self, **kwargs):
+            context = super(HistoryApp, self).get_context_data(**kwargs)
+            country = History.objects.get(pk = self.kwargs.get('pk')).country
+            disaster = History.objects.get(pk = self.kwargs.get('pk')).disaster
+            helpline = Helpline.objects.filter(country = country).get(disaster = disaster).Number
+            print(helpline)
+
+            context['helpline'] =helpline
+            print(context['helpline'])
+            return context
+    context_object_name = "count"
+
 
 def thankyou(request):
     return render(request,'country/thankyou.html')
