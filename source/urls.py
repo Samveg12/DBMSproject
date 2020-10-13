@@ -13,5 +13,6 @@ urlpatterns = [
     path('all',views.All.as_view()),
     path('change/<int:pk>',views.updates.as_view()),
     path('delete/<int:pk>',views.deletes.as_view()),
+    path('update/<int:pk>',views.updates.as_view()),
 ]
 
