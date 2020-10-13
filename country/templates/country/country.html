@@ -60,7 +60,7 @@ Poppins:300,400,500,600,700' ] }
 			</div><!-- End .home-slider -->
 
 			<section class="container">
-
+				<h1 className="display1 m-2">Alerts</h1>
 				<div class="owl-carousel owl-theme nav-image-center show-nav-hover nav-outer cats-slider">
 						{% for i in count %}
 
@@ -71,6 +71,7 @@ Poppins:300,400,500,600,700' ] }
 									</figure>
 									<div class="category-content">
 										<h3>{{i.disaster}}</h3>
+										<h3>{{i.city}}</h3>
                   </div>
                   <div class="category-content">
 										<h5>{{i.startdate}}-{{i.enddate}}</h5>
@@ -80,6 +81,31 @@ Poppins:300,400,500,600,700' ] }
 							
         				{% endfor %}
 				</div>
+			</section>
+
+			<section class="container">
+				<h1 className="display1 m-2">History</h1>
+				<div class="owl-carousel owl-theme nav-image-center show-nav-hover nav-outer cats-slider">
+						{% for i in hist %}
+
+							<div class="product-category">
+								<a href="/country/disasterdisplay/{{i.id}}">
+									<figure>
+										<img style="height:130px;" src="/media/{{i.disaster.image}}">
+									</figure>
+									<div class="category-content">
+										<h3>{{i.disaster}}</h3>
+										<h3>{{i.city}}</h3>
+                  </div>
+                  <div class="category-content">
+										<h5>{{i.startdate}}-{{i.enddate}}</h5>
+									</div>
+								</a>
+							</div>
+							
+        				{% endfor %}
+				</div>
+			</section>
 					
 
 			

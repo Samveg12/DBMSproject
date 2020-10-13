@@ -42,7 +42,8 @@ def country(request,id):
                 history.save()
                 i.delete()
     set=[item.disaster for item in s]
-    parameter={'count':s,'all':all}
+    hist = History.objects.filter(country = id)
+    parameter={'count':s,'hist':hist}
     return render(request,'country/country.html',parameter)
 class Disaster(DetailView):
     model = finaltable
