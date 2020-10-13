@@ -18,7 +18,7 @@ def mail(countrys,disaster,Lattitud,Longitud,severity,startdate,enddate,city,rad
 		send_mail(
 		    subject = "alert",
 		    message = f'{countrys},{disaster},{Lattitud},{Longitud},{severity},{startdate},{enddate},{city},{radius},{additionalInfo}',
-		    from_email = "samvegvshah13@gmail.com",
+		    from_email = "bhavya.pritesh@gmail.com",
 		    recipient_list = [user.email],
 		    fail_silently = False,
 		)

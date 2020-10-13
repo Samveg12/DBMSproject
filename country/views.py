@@ -19,7 +19,7 @@ def mail(name,email,country):
     send_mail(
         subject = "alert",
         message = f'thanks {name} for registering for {country}',
-        from_email = "samvegvshah13@gmail.com",
+        from_email = "bhavya.pritesh@gmail.com",
         recipient_list = [email],
         fail_silently = False,
     )
