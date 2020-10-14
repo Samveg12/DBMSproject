@@ -137,3 +137,4 @@ print(EMAIL_HOST_PASSWORD)
 EMAIL_HOST_USER = 'bhavya.pritesh@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get("PASSWORD")
 
+
