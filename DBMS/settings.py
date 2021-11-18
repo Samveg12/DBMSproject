@@ -40,9 +40,32 @@ INSTALLED_APPS = [
     'country',
     'source',
     "bootstrap4",
+    'django.contrib.sites',
     "bootstrap_datepicker_plus",
-]
+    'rest_framework.authtoken',
+    'rest_framework',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
+]
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+SITE_ID=1
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -83,7 +106,12 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -131,10 +159,10 @@ LOGOUT_REDIRECT_URL = "/source/login"
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ""
-print(EMAIL_HOST_PASSWORD)
-EMAIL_HOST_USER = 'bhavya.pritesh@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ.get("PASSWORD")
+EMAIL_HOST_USER = 'samvegvshah13@gmail.com'
+EMAIL_HOST_PASSWORD = "Samveg13@"
+# print(EMAIL_HOST_PASSWORD)
+# EMAIL_HOST_USER = 'bhavya.pritesh@gmail.com'
+# EMAIL_HOST_PASSWORD = os.environ.get("Samveg13@")
 
 
