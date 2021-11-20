@@ -1,4 +1,4 @@
-from django .http import HttpResponse
+from django .http import HttpResponse, request
 from .models import countries
 from .models import finaltable,History,Helpline
 from .models import disaster
@@ -9,6 +9,7 @@ from django.core.mail import send_mail
 import datetime
 from django.utils import timezone
 
+import requests
 
 
 
@@ -27,7 +28,38 @@ def mail(name,email,country):
 class index(ListView):
     model = countries
     template_name="country/index.html"
+
     context_object_name="count"
+
+class Temperature(ListView):
+    model = countries
+    template_name="country/temperature.html"
+    def get_context_data(self, **kwargs):
+            context = super(Temperature, self).get_context_data(**kwargs)
+            r = round(requests.get('https://api.openweathermap.org/data/2.5/weather?q=Mumbai&appid=d58cd04275ca385954df23c73d6d2902').json()['main']['temp']-273,2)
+            context['India']=r
+            r = round(requests.get('https://api.openweathermap.org/data/2.5/weather?q=Japan&appid=d58cd04275ca385954df23c73d6d2902').json()['main']['temp']-273,2)
+            context['Japan']=r
+            r = round(requests.get('https://api.openweathermap.org/data/2.5/weather?q=Washington&appid=d58cd04275ca385954df23c73d6d2902').json()['main']['temp']-273,2)
+            context['USA']=r
+            r = round(requests.get('https://api.openweathermap.org/data/2.5/weather?q=Dubai&appid=d58cd04275ca385954df23c73d6d2902').json()['main']['temp']-273,2)
+            context['Dubai']=r
+            r = round(requests.get('https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=d58cd04275ca385954df23c73d6d2902').json()['main']['temp']-273,2)
+            context['Australia']=r
+
+
+
+
+
+            print("+++++++++")
+            print(context)
+            # print(context['helpline'])
+            return context
+    # print(context_object_name)
+    context_object_name="count"
+    print(context_object_name)
+
+    
 
 def country(request,id):
     now = timezone.now()

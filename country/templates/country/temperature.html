@@ -55,7 +55,7 @@ Poppins:300,400,500,600,700' ] }
 					<img class="slide-bg " src="{% static 'country/images/photo.jpg' %}"  alt="home banner">
 					<div class="banner-layer banner-layer-middle">
 						<h2 style="color:rgb(255,255,255)" class="m-b-1">Stay Safe </h2>
-						<h3 style="color:rgb(255,255,255)" class="rotated-upto-text mb-0">When A Disaster Strikes</h3>
+						<h3 style="color:rgb(255,255,255)" class="rotated-upto-text mb-0">Temperature details</h3>
 					</div><!-- End .banner-layer -->
 				</div><!-- End .home-slide -->
 			</div><!-- End .home-slider -->
@@ -64,20 +64,49 @@ Poppins:300,400,500,600,700' ] }
 				<h2 class="section-title ls-n-10 text-center pt-2 m-b-4">Chose Your country</h2>
 
 				<div class="owl-carousel owl-theme nav-image-center show-nav-hover nav-outer cats-slider">
-						{% for i in count %}
 
 							<div class="product-category">
-								<a href="/country/{{i.id}}">
 									<figure>
-										<img src="/media/{{i.image}}">
+										<img src="/media/{{count.0.image}}">
 									</figure>
 									<div class="category-content">
-										<h3>{{i.name}}</h3>
+										<h3>{{India}} C</h3>
 									</div>
-								</a>
+							</div>
+							<div class="product-category">
+									<figure>
+										<img src="/media/{{count.1.image}}">
+									</figure>
+									
+									<div class="category-content">
+										<h3>{{Japan}} C</h3>
+									</div>
+							</div>
+							<div class="product-category">
+									<figure>
+										<img src="/media/{{count.2.image}}">
+									</figure>
+									<div class="category-content">
+										<h3>{{USA}} C</h3>
+									</div>
+							</div>
+							<div class="product-category">
+									<figure>
+										<img src="/media/{{count.3.image}}">
+									</figure>
+									<div class="category-content">
+										<h3>{{Australia}} C</h3>
+									</div>
+							</div>
+							<div class="product-category">
+									<figure>
+										<img src="/media/{{count.4.image}}">
+									</figure>
+									<div class="category-content">
+										<h3>{{Dubai}} C</h3>
+									</div>
 							</div>
 							
-        				{% endfor %}
 				</div>
 					
 
