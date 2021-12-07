@@ -7,6 +7,10 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.core.mail import send_mail
 from .models import Emails
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+
 
 
 # Create your views here.
@@ -49,11 +53,21 @@ class Create(LoginRequiredMixin,CreateView):
 		return super().form_valid(form)	
 		
 	
+class Checking(APIView):
+	permission_classes = (IsAuthenticated,)
 
+	def get(self, request):
+		content = {'message': 'Hello, World!'}
+		return Response(content)
 class All(LoginRequiredMixin,ListView):
 	model = finaltable
 	template_name="source/list.html"
 	context_object_name="final"
+	# permission_classes = (IsAuthenticated,)
+
+	# def get(self, request):
+	# 	content = {'message': 'Hello, World!'}
+	# 	return Response(content,template_name-'source/list.html')
 
 
 class updates(LoginRequiredMixin,UpdateView):

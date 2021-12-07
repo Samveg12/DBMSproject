@@ -4,6 +4,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from django.contrib.auth import views as auth_views
+from django.urls import path
+
 
 
 urlpatterns = [
@@ -15,5 +17,7 @@ urlpatterns = [
     path('change/<int:pk>',views.updates.as_view()),
     path('delete/<int:pk>',views.deletes.as_view()),
     path('update/<int:pk>',views.updates.as_view()),
+    
+    path('hello/', views.Checking.as_view(), name='checking'),
 ]
 
